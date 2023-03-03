@@ -4,7 +4,64 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <title>vanillajs-challenge</title>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div id="area-clock">
+          <span></span>
+          <span></span>
+        </div>
+        <div class="hidden" id="area-login">
+          <form id="login-form">
+            <input type="text" id="name" required />
+            <button id="login">로그인!</button>
+          </form>
+        </div>
+        <div class="hidden" id="area-greeting">
+          <p></p>
+        </div>
+        <div class="hidden" id="area-todoweather">
+          <div id="todo-box">
+            <div>
+              <h5>Todo</h5>
+              <form id="todo-form">
+                <input
+                  type="text"
+                  placeholder="할 일을 입력해주세요."
+                  required
+                />
+              </form>
+              <img
+                src="./src/img/choonsik-bellyfat.png"
+                alt="Choonsik is very cute!"
+              />
+            </div>
+            <div>
+              <h5>LIST</h5>
+              <ul id="todo-list"></ul>
+            </div>
+          </div>
+          <div id="weather-box">
+            <p>Weather</p>
+            <img />
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <div class="hidden" id="area-quotes">
+          <span> <img src="./src/img/choonsik-dododo.png" /></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <script src="./src/js/background.js"></script>
+    <script src="./src/js/clock.js"></script>
+    <script src="./src/js/login.js"></script>
+    <script src="./src/js/todo.js"></script>
+    <script src="./src/js/weather.js"></script>
+    <script src="./src/js/quotes.js"></script>
+  </body>
 </html>
