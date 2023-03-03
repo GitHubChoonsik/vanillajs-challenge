@@ -4,23 +4,24 @@
 const toDoForm = document.querySelector("#todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.querySelector("#todo-list");
+const toDoImg = document.querySelector("#todo-box img");
 
 const TODOS_KEY = "todos";
 
 let toDos = [];
 
-function saveToDos() {
+const saveToDos = () => {
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
-}
+};
 
-function deleteToDo(event) {
+const deleteToDo = (event) => {
   const li = event.target.parentElement.parentElement;
   li.remove();
   toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
   saveToDos();
-}
+};
 
-function paintToDo(newTodo) {
+const paintToDo = (newTodo) => {
   const li = document.createElement("li");
   li.id = newTodo.id;
   const span = document.createElement("span");
@@ -33,15 +34,19 @@ function paintToDo(newTodo) {
   li.appendChild(span);
   li.appendChild(button);
   toDoList.appendChild(li);
-}
+};
 
-function handleToDoSubmit(event) {
+const handleToDoSubmit = (event) => {
   event.preventDefault();
   if (toDos.length >= 7) {
     alert("할 일이 너무 많습니다!\n다른 할 일을 먼저 끝낸 후에 추가해주세요!");
     return;
   }
   const newTodo = toDoInput.value;
+  if (newTodo === "") {
+    alert("할 일을 입력해주세요!");
+    return;
+  }
   toDoInput.value = "";
   const newTodoObj = {
     text: newTodo,
@@ -50,8 +55,15 @@ function handleToDoSubmit(event) {
   toDos.push(newTodoObj);
   paintToDo(newTodoObj);
   saveToDos();
-}
+};
 
+toDoImg.addEventListener("mouseover", () => {
+  toDoImg.src = "./src/img/choonsik-sing.png";
+});
+toDoImg.addEventListener("mouseout", () => {
+  toDoImg.src = "./src/img/choonsik-bellyfat.png";
+});
+toDoImg.addEventListener("click", handleToDoSubmit);
 toDoForm.addEventListener("submit", handleToDoSubmit);
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
